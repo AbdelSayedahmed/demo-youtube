@@ -18,7 +18,8 @@ export default function App() {
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show />} />
-        <Route path="/" element={<Shows query={search} />} />
+        <Route path="/:search" element={<Shows query={search} />} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   );
