@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import About from "/src/components/About.jsx";
-import Show from "/src/components/Show.jsx";
-import Nav from "/src/components/Nav.jsx";
-import Shows from "/src/components/Shows.jsx";
-import Home from "/src/components/Home.jsx";
+import About from "./components/About.jsx";
+import Show from "./components/Show.jsx";
+import Nav from "./components/Nav.jsx";
+import Shows from "./components/Shows.jsx";
+import Home from "./components/Home.jsx";
 import "./App.css";
 
 export default function App() {
@@ -12,10 +12,7 @@ export default function App() {
 
   return (
     <>
-      <Nav
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+      <Nav searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show />} />

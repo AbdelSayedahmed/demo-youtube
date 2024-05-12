@@ -1,8 +1,7 @@
-import "./Shows.css";
-import { Link, useParams } from "react-router-dom";
-import ShowListing from "./ShowListing";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { searchVideos } from "../utils/fetch.js";
+import ShowGrid from "./ShowGrid";
 
 export default function Shows({ setSearchTerm }) {
   const [items, setItems] = useState([]);
@@ -19,13 +18,5 @@ export default function Shows({ setSearchTerm }) {
     };
   }, [query]);
 
-  return (
-    <div className="shows-container">
-      {items.map((item, i) => (
-        <Link key={`${item.videoId}${i}`} to={`/${item.videoId}`}>
-          <ShowListing title={item.title} thumbnail={item.thumbnail} key={`${i}${item.videoId}`}/>
-        </Link>
-      ))}
-    </div>
-  );
+  return <ShowGrid items={items} />;
 }

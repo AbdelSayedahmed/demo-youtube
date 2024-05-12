@@ -1,3 +1,4 @@
+import React from "react";
 import "./ShowListing.css";
 
 export default function ShowListing({ title, thumbnail }) {

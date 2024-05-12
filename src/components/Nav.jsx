@@ -10,10 +10,7 @@ export default function Nav({ searchTerm, setSearchTerm }) {
         <Link to="/" className="nav-container_link">
           <img src="../assets/youtubelogo.png" alt="Home" id="youtubelogo" />
         </Link>
-        <Filter
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-        />
+        <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
       <div className="nav-container_right">
         <Link to="/about" className="nav-container_link">
