@@ -1,0 +1,34 @@
+.nav-container {
+    height: min-content;
+    background-color: lightcoral;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container_left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container_right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container_link {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+.nav-container_link:hover {
+    cursor: pointer;
+    color: lightgray;
+}
+
+#youtubelogo {
+    height: 20px;
+}

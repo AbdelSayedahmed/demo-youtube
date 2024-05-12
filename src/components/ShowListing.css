@@ -1,0 +1,14 @@
+.listing-container {
+    width: 400px;
+}
+
+.listing-container img {
+    width: 100%;
+}
+
+.listing-container h3 {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
