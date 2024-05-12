@@ -1,18 +1,24 @@
-// Filter.js
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Filter.css";
 
-export default function Filter({ handleFilter }) {
-  const [searchTerm, setSearchTerm] = useState("");
+export default function Filter({ searchTerm, setSearchTerm }) {
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleFilter(searchTerm);
+    navigate(`/search/${searchTerm}`);
   };
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    return () => {
+      setSearchTerm("");
+    };
+  }, []);
 
   return (
     <form className="filter-form" onSubmit={handleSubmit}>

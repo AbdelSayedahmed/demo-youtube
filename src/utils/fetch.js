@@ -2,6 +2,7 @@ const apiTokens = [
   import.meta.env.VITE_ABDEL_API_KEY,
   import.meta.env.VITE_ARI_API_KEY,
 ];
+
 let index = -1;
 
 function getNextToken() {
@@ -38,7 +39,7 @@ export async function searchVideos(query) {
     const videos = data.items.map((item) => ({
       title: item.snippet.title,
       videoId: item.id.videoId,
-      thumbnail: item.snippet.thumbnails.high.url
+      thumbnail: item.snippet.thumbnails.high.url,
     }));
     return videos;
   } catch (error) {
