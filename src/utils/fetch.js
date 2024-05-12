@@ -1,18 +1,7 @@
-const apiTokens = [
-  import.meta.env.VITE_ABDEL_API_KEY,
-  import.meta.env.VITE_ARI_API_KEY,
-];
-
-let index = -1;
-
-function getNextToken() {
-  index = (index + 1) % apiTokens.length;
-  return apiTokens[index];
-}
+const apiKey = import.meta.env.VITE_API_KEY
 
 export async function getRandomVideos() {
   try {
-    const apiKey = getNextToken();
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=10`
     );
@@ -31,7 +20,6 @@ export async function getRandomVideos() {
 
 export async function searchVideos(query) {
   try {
-    const apiKey = getNextToken();
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=10`
     );
