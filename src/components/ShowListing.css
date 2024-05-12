@@ -1,9 +1,13 @@
 .listing-container {
     width: 400px;
+    margin: 30px;
+    color: white;
 }
 
 .listing-container img {
     width: 100%;
+    border-radius: 12px;
+    border: 1px solid grey;
 }
 
 .listing-container h3 {
