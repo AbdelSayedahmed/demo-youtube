@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";

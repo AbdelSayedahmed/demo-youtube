@@ -1,45 +1,50 @@
 const apiTokens = [
-  import.meta.env.ABDEL_API_KEY,
-  import.meta.env.ARI_API_KEY,
-  import.meta.env.SHANEL_API_KEY,
+  import.meta.env.VITE_ABDEL_API_KEY,
+  import.meta.env.VITE_ARI_API_KEY,
 ];
-let currentTokenIndex = 0;
+let index = -1;
 
 function getNextToken() {
-  currentTokenIndex = (currentTokenIndex + 1) % apiTokens.length;
-  return apiTokens[currentTokenIndex];
+  index = (index + 1) % apiTokens.length;
+  return apiTokens[index];
 }
 
-export function getRandomVideos() {
-  const apiKey = getNextToken();
-  const response = fetch(
-    `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=10`
-  );
-  const data = response.json();
-  const videos = data.items.map((item) => {
-    return {
+export async function getRandomVideos() {
+  try {
+    const apiKey = getNextToken();
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=10`
+    );
+    const data = await response.json();
+    const videos = data.items.map((item) => ({
       title: item.snippet.title,
       videoId: item.id,
-      thumbnail: item.snippet.thumbnails.default.url,
-    };
-  });
-  return videos;
+      thumbnail: item.snippet.thumbnails.standard.url,
+    }));
+    return videos;
+  } catch (error) {
+    console.error("Error fetching random videos:", error);
+    return [];
+  }
 }
 
-export function searchVideos(query) {
-  const apiKey = getNextToken();
-  const response = fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=10`
-  );
-  const data = response.json();
-  const videos = data.items.map((item) => {
-    return {
+export async function searchVideos(query) {
+  try {
+    const apiKey = getNextToken();
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=10`
+    );
+    const data = await response.json();
+    const videos = data.items.map((item) => ({
       title: item.snippet.title,
       videoId: item.id.videoId,
-      thumbnail: item.snippet.thumbnails.standard.url,
-    };
-  });
-  return videos;
+      thumbnail: item.snippet.thumbnails.high.url
+    }));
+    return videos;
+  } catch (error) {
+    console.error("Error searching videos:", error);
+    return [];
+  }
 }
 
 // Function to show a specific video
