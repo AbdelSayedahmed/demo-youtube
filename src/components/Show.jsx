@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getVideoDetails } from "../utils/fetch";
-import Comments from "./Comments.jsx"
+import Comments from "./Comments.jsx";
 import "./Show.css";
 
 export default function Show() {
@@ -49,11 +49,16 @@ export default function Show() {
         ></iframe>
       </div>
       <div className="video-stats">
-        <span><strong>Views:</strong> {video.statistics.viewCount}</span>
-        <span><strong>Likes:</strong> {video.statistics.likeCount}</span>
+        <span>
+          <strong>Views:</strong> {video.statistics.viewCount}
+        </span>
+        <span>
+          <strong>Likes:</strong> {video.statistics.likeCount}
+        </span>
         <br />
         <span>
-          <strong>Published on:</strong> {new Date(video.publishedAt).toLocaleDateString()}
+          <strong>Published on:</strong>{" "}
+          {new Date(video.publishedAt).toLocaleDateString()}
         </span>
       </div>
       <p>
