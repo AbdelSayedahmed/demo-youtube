@@ -3,10 +3,7 @@ import "./CategoryNav.css";
 import { useNavigate } from "react-router-dom";
 // import { categorySearch } from "../utils/fetch";
 
-export default function CategoryNav({ category, setCategory }) {
-  const [items, setItems] = useState([]);
-  const [showCategory, setShowCategory] = useState(true);
-
+export default function CategoryNav({ setCategory }) {
   const categories = [
     { name: "Music", id: 10 },
     { name: "News", id: 25 },
@@ -22,14 +19,6 @@ export default function CategoryNav({ category, setCategory }) {
     setCategory(category.id);
     navigate(`/category/${category.name}`);
   };
-
-  // useEffect(() => {
-  //   categorySearch(category)
-  //     .then((data) => {
-  //       setItems(data);
-  //     })
-  //     .catch((error) => console.error("Error searching videos:", error));
-  // }, []);
 
   return (
     <div className="Category-nav-container">

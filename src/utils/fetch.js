@@ -1,9 +1,11 @@
 const apiKey = import.meta.env.VITE_API_KEY;
 
 // Function to show 12 random videos on load
-export function getRandomVideos() {
+export function getRandomVideos(category) {
   return fetch(
-    `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=15`
+    category
+      ? `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&videoCategoryId=${category}&maxResults=15`
+      : `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=15`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -77,31 +79,6 @@ export function getVideoDetails(videoId) {
       return null;
     });
 }
-
-// Function to get video based on option clicked
-// export function categorySearch(category) {
-//   fetch(
-//     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&videoCategoryId=${category}&maxResults=15`
-//   )
-//     .then((response) => response.json())
-//     .then((data) => {
-//       return data.items
-//         .map((item) => ({
-//           title: item.snippet.title,
-//           videoId: item.id,
-//           thumbnail: item.snippet.thumbnails.standard.url,
-//           description: item.snippet.description,
-//           kind: item.id.kind,
-//         }))
-//         .filter(
-//           (item) => item.kind !== "youtube#channel" && item.description !== ""
-//         );
-//     })
-//     .catch((error) => {
-//       console.log(`Error fetching ${category}} videos:`, error);
-//       return [];
-//     });
-// }
 
 // Function to decode HTML entities
 export function decoder(text) {

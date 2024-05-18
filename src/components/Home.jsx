@@ -7,27 +7,19 @@ import CategoryNav from "./CategoryNav.jsx";
 export default function Home() {
   const [items, setItems] = useState([]);
   const [category, setCategory] = useState("");
-  const [showCategory, setShowCategory] = useState(true);
-
   const { categorySearch } = useParams();
 
   useEffect(() => {
-    if (categorySearch) {
-      console.log("True");
-    } else {
-      getRandomVideos()
-        .then((data) => {
-          setItems(data);
-        })
-        .catch((error) =>
-          console.error("Error fetching random videos:", error)
-        );
-    }
+    getRandomVideos(category)
+      .then((data) => {
+        setItems(data);
+      })
+      .catch((error) => console.error("Error fetching random videos:", error));
   }, [categorySearch]);
 
   return (
     <div>
-      <CategoryNav category={category} setCategory={setCategory}/>
+      <CategoryNav setCategory={setCategory} />
       <ShowGrid items={items} />
     </div>
   );
