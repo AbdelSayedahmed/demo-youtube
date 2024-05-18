@@ -16,10 +16,10 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <MiniGrid category={"10"} />
-      <MiniGrid category={"25"} />
-      <MiniGrid category={"17"} />
-      <MiniGrid category={"20"} />
+      <MiniGrid category={{ name: "Music", id: 10 }} />
+      <MiniGrid category={{ name: "News", id: 25 }} />
+      <MiniGrid category={{ name: "Sports", id: 17 }} />
+      <MiniGrid category={{ name: "Gaming", id: 20 }} />
       <ShowGrid items={items} />
     </div>
   );

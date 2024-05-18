@@ -8,21 +8,25 @@ export default function MiniGrid({ category }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getCategoryVideos(category, 10)
+    getCategoryVideos(category.id, 10)
       .then((data) => {
-        console.log(category);
         setItems(data);
       })
-      .catch((error) => console.error("Error finding categorized videos videos:", error));
+      .catch((error) =>
+        console.error("Error finding categorized videos videos:", error)
+      );
   }, [category]);
 
   return (
     <div className="mini-grid-container">
-      {items.map((item, i) => (
-        <Link key={i} to={`/${item.videoId}`}>
-          <ShowListing title={item.title} thumbnail={item.thumbnail} />
-        </Link>
-      ))}
+      <h3>{category.name}</h3>
+      <div className="mini-grid-container_videos">
+        {items.map((item, i) => (
+          <Link key={i} to={`/${item.videoId}`}>
+            <ShowListing title={item.title} thumbnail={item.thumbnail} />
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
