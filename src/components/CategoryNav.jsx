@@ -9,7 +9,7 @@ export default function CategoryNav({ setCategory }) {
     { name: "News", id: 25 },
     { name: "Movies", id: 30 },
     { name: "TVShows", id: 43 },
-    { name: "Sports", id: 42 },
+    { name: "Sports", id: 17 },
     { name: "Gaming", id: 20 },
   ];
 
