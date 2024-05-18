@@ -1,7 +1,7 @@
 .mini-grid-container {
     width: 90%;
     border-radius: 15px;
-    margin: 50px 0px 30px 50px;
+    margin: 50px 0px 10px 0px;
     padding: 20px;
     border: 1px solid grey;
 }
@@ -15,4 +15,8 @@
 .mini-grid-container h3 {
     color: white;
     font-size: 24px;
+}
+
+.mini-grid-container a {
+    text-decoration: none;
 }

@@ -1,11 +1,12 @@
-.Category-nav-container {
+.category-nav-container {
     display: flex;
     gap: 15px;
     justify-content: center;
 }
 
-.Category-nav-container button {
+.category-nav-container button {
     color: white;
+    font-size: 18px;
     background-color: #212121;
     text-decoration: none;
     border: 1px solid #292929;
@@ -13,7 +14,8 @@
     padding: 5px 15px;
 }
 
-.Category-nav-container button:hover {
+.category-nav-container button:hover {
     border: 1px solid grey;
     background-color: grey;
+    cursor: pointer;
 }

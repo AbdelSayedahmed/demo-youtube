@@ -17,7 +17,7 @@ export default function CategoryNav({ setCategory }) {
   };
 
   return (
-    <div className="Category-nav-container">
+    <div className="category-nav-container">
       {categories.map((category, i) => (
         <button key={i} onClick={() => handleClick(category)}>
           {category.name}

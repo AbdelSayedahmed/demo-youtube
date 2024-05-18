@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getRandomVideos } from "../utils/fetch.js";
 import MiniGrid from "./MiniGrid.jsx";
 import ShowGrid from "./ShowGrid.jsx";
+import "./Home.css";
 
 export default function Home() {
   const [items, setItems] = useState([]);

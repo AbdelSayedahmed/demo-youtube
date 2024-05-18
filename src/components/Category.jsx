@@ -7,7 +7,7 @@ export default function Category({ category }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getCategoryVideos(category, 12)
+    getCategoryVideos(category, 32)
       .then((data) => {
         console.log(category);
         setItems(data);

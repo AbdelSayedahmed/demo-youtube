@@ -28,7 +28,7 @@ export function getRandomVideos() {
 // Function to show 12 videos on search
 export function searchVideos(query) {
   return fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=25`
+    `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=32`
   )
     .then((response) => response.json())
     .then((data) => {
@@ -90,12 +90,7 @@ export function getCategoryVideos(category, count) {
           title: item.snippet.title,
           videoId: item.id,
           thumbnail: item.snippet.thumbnails.standard.url,
-          description: item.snippet.description,
-          kind: item.id.kind,
         }))
-        .filter(
-          (item) => item.kind !== "youtube#channel" && item.description !== ""
-        );
     })
     .catch((error) => {
       console.error("Error fetching categorized videos:", error);
