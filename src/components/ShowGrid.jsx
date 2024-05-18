@@ -5,7 +5,7 @@ import "./ShowGrid.css"
 
 export default function ShowGrid({ items }) {
   return (
-    <div className="shows-container">
+    <div className="shows-grid-container">
       {items.map((item, i) => (
         <Link key={i} to={`/${item.videoId}`}>
           <ShowListing title={item.title} thumbnail={item.thumbnail} />
