@@ -13,7 +13,7 @@
     padding: 5px 15px;
 }
 
-.Category-nav-container a:hover {
+.Category-nav-container button:hover {
     border: 1px solid grey;
     background-color: grey;
 }

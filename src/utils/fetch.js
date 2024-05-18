@@ -79,7 +79,29 @@ export function getVideoDetails(videoId) {
 }
 
 // Function to get video based on option clicked
-export function searchOptions(option) {}
+// export function categorySearch(category) {
+//   fetch(
+//     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&videoCategoryId=${category}&maxResults=15`
+//   )
+//     .then((response) => response.json())
+//     .then((data) => {
+//       return data.items
+//         .map((item) => ({
+//           title: item.snippet.title,
+//           videoId: item.id,
+//           thumbnail: item.snippet.thumbnails.standard.url,
+//           description: item.snippet.description,
+//           kind: item.id.kind,
+//         }))
+//         .filter(
+//           (item) => item.kind !== "youtube#channel" && item.description !== ""
+//         );
+//     })
+//     .catch((error) => {
+//       console.log(`Error fetching ${category}} videos:`, error);
+//       return [];
+//     });
+// }
 
 // Function to decode HTML entities
 export function decoder(text) {
