@@ -5,8 +5,6 @@ export default function CategoryNav({ setCategory }) {
   const categories = [
     { name: "Music", id: 10 },
     { name: "News", id: 25 },
-    { name: "Movies", id: 30 },
-    { name: "TVShows", id: 43 },
     { name: "Sports", id: 17 },
     { name: "Gaming", id: 20 },
   ];
