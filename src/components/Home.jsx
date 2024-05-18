@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { getRandomVideos, getCategoryVideos } from "../utils/fetch.js";
-import ShowGrid from "./ShowGrid";
 import CategoryNav from "./CategoryNav.jsx";
-import CategoryListing from "./CategoryListing.jsx";
+import CategoryListing from "./CategoryGrid.jsx";
 import MiniGrid from "./MiniGrid.jsx";
 
-export default function Home({ category, setCategory }) {
+export default function Home({ setCategory }) {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -19,7 +18,6 @@ export default function Home({ category, setCategory }) {
   return (
     <div className="home-container">
       <CategoryNav setCategory={setCategory} />
-      <CategoryListing />
       <ul></ul>
     </div>
   );

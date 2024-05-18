@@ -6,6 +6,7 @@ import Nav from "./components/Nav.jsx";
 import Shows from "./components/Shows.jsx";
 import Home from "./components/Home.jsx";
 import "./App.css";
+import CategoryListing from "./components/CategoryGrid.jsx";
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,7 +14,11 @@ export default function App() {
 
   return (
     <>
-      <Nav searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCategory={setCategory}/>
+      <Nav
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        setCategory={setCategory}
+      />
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show />} />
@@ -21,13 +26,12 @@ export default function App() {
           path="/search/:query"
           element={<Shows setSearchTerm={setSearchTerm} />}
         />
-        <Route
-          path="/"
-          element={<Home category={category} setCategory={setCategory} />}
-        />
+        <Route path="/" element={<Home />} />
         <Route
           path="/category/:categorySearch"
-          element={<Home category={category} setCategory={setCategory} />}
+          element={
+            <CategoryListing category={category} setCategory={setCategory} />
+          }
         />
       </Routes>
     </>
