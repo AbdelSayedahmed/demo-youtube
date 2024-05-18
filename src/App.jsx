@@ -21,6 +21,7 @@ export default function App() {
           element={<Shows setSearchTerm={setSearchTerm} />}
         />
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<Shows />} />
       </Routes>
     </>
   );

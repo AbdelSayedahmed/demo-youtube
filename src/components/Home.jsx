@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getRandomVideos } from "../utils/fetch.js";
+import Options from "./Options.jsx";
 import ShowGrid from "./ShowGrid";
 
 export default function Home() {
@@ -13,5 +14,10 @@ export default function Home() {
       .catch((error) => console.error("Error fetching random videos:", error));
   }, []);
 
-  return <ShowGrid items={items} />;
+  return (
+    <div>
+      <Options />
+      <ShowGrid items={items} />
+    </div>
+  );
 }
