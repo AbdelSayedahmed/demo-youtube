@@ -12,7 +12,6 @@ export default function Shows({ setSearchTerm }) {
     searchVideos(query)
       .then((data) => {
         setItems(data);
-        console.log(data, " from shows");
       })
       .catch((error) => console.error("Error searching videos:", error));
     return () => {

@@ -1,9 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 
 export default function Nav({ searchTerm, setSearchTerm }) {
+  const navigate = useNavigate();
+
+  const handleReturn = () => {
+    
+  }
+
   return (
     <div className="nav-container">
       <div className="nav-container_left">

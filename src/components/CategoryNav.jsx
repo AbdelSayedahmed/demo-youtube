@@ -1,7 +1,5 @@
-import { useEffect, useState } from "react";
 import "./CategoryNav.css";
 import { useNavigate } from "react-router-dom";
-// import { categorySearch } from "../utils/fetch";
 
 export default function CategoryNav({ setCategory }) {
   const categories = [

@@ -4,7 +4,6 @@ import ShowListing from "./ShowListing";
 import "./ShowGrid.css"
 
 export default function ShowGrid({ items }) {
-  console.log(items, "from show grid");
   return (
     <div className="shows-grid-container">
       {items.map((item, i) => (

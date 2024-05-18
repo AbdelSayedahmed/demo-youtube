@@ -22,7 +22,7 @@ export function getRandomVideos(category) {
         );
     })
     .catch((error) => {
-      console.log("Error fetching random videos:", error);
+      console.error("Error fetching random videos:", error);
       return [];
     });
 }

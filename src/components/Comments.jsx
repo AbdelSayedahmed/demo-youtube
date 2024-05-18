@@ -15,7 +15,6 @@ export default function Comments() {
       setComment("");
       setName("");
     }
-    console.log("Comment submitted:", comment);
   };
 
   return (
