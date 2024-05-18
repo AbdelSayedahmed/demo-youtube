@@ -9,25 +9,15 @@ export default function Home() {
   const [category, setCategory] = useState("");
   const { categorySearch } = useParams();
 
-  async function trigger() {
-    try {
-      const data = await getRandomVideos(category);
-      setItems(data);
-    } catch (err) {}
-  }
-
   useEffect(() => {
-    trigger()
-  }, [categorySearch]) 
-  // useEffect(() => {
-  //   console.log(category);
-  //   getRandomVideos(category)
-  //     .then((data) => {
-  //       setItems(data);
-  //       console.log(items, "from home");
-  //     })
-  //     .catch((error) => console.error("Error fetching random videos:", error));
-  // }, [categorySearch]);
+    console.log(category);
+    getRandomVideos(category)
+      .then((data) => {
+        setItems(data);
+        console.log(items, "from home");
+      })
+      .catch((error) => console.error("Error fetching random videos:", error));
+  }, [categorySearch]);
 
   return (
     <div>
