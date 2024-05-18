@@ -78,6 +78,7 @@ export function getVideoDetails(videoId) {
     });
 }
 
+// Function to get categorized videos without searching
 export function getCategoryVideos(category, count) {
   return fetch(
     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&videoCategoryId=${category}&maxResults=${count}`

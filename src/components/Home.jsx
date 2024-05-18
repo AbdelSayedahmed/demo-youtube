@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getRandomVideos, getCategoryVideos } from "../utils/fetch.js";
 import CategoryNav from "./CategoryNav.jsx";
-import CategoryListing from "./CategoryGrid.jsx";
+import CategoryListing from "./Category.jsx";
 import MiniGrid from "./MiniGrid.jsx";
 
 export default function Home({ setCategory }) {
@@ -17,7 +17,6 @@ export default function Home({ setCategory }) {
 
   return (
     <div className="home-container">
-      <CategoryNav setCategory={setCategory} />
       <ul></ul>
     </div>
   );

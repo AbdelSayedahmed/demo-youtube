@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ShowListing from "./ShowListing";
-import "./ShowGrid.css"
+import "./ShowGrid.css";
 
 export default function ShowGrid({ items }) {
   return (

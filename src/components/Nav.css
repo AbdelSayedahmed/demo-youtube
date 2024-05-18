@@ -24,15 +24,9 @@
     font-size: 20px;
 }
 
-.nav-container a:hover, .nav-container button:hover  {
+.nav-container a:hover {
     cursor: pointer;
     color: lightgray;
-}
-
-.nav-container button {
-    background: none;
-    border: none;
-    margin-right: 20px;
 }
 
 #youtubelogo {
