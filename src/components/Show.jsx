@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getVideoDetails } from "../utils/fetch";
+import { decoder, getVideoDetails } from "../utils/fetch";
 import Comments from "./Comments.jsx";
 import "./Show.css";
 
@@ -38,14 +38,14 @@ export default function Show() {
 
   return (
     <div className="video-container">
-      <h1>{video.title}</h1>
+      <h1>{decoder(video.title)}</h1>
       <div className="video-wrapper">
         <iframe
           src={`https://www.youtube.com/embed/${video.videoId}`}
           frameBorder="0"
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          title={video.title}
+          title={decoder(video.title)}
         ></iframe>
       </div>
       <div className="video-stats">
