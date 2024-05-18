@@ -3,23 +3,24 @@ import { Link, useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 
-export default function Nav({ searchTerm, setSearchTerm }) {
+export default function Nav({ searchTerm, setSearchTerm, setCategory }) {
   const navigate = useNavigate();
 
   const handleReturn = () => {
-    
-  }
+    setCategory(null);
+    navigate("/");
+  };
 
   return (
     <div className="nav-container">
       <div className="nav-container_left">
-        <Link to="/" className="nav-container_link">
+        <button onClick={handleReturn}>
           <img src="../assets/youtubelogo.png" alt="Home" id="youtubelogo" />
-        </Link>
+        </button>
         <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </div>
       <div className="nav-container_right">
-        <Link to="/about" className="nav-container_link">
+        <Link to="/about" className="nav-container">
           About
         </Link>
       </div>

@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-      <Nav searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <Nav searchTerm={searchTerm} setSearchTerm={setSearchTerm} setCategory={setCategory}/>
       <Routes>
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show />} />
