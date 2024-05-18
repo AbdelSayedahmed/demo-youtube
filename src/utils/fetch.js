@@ -78,6 +78,9 @@ export function getVideoDetails(videoId) {
     });
 }
 
+// Function to get video based on option clicked
+export function searchOptions(option) {}
+
 // Function to decode HTML entities
 export function decoder(text) {
   const textArea = document.createElement("textarea");

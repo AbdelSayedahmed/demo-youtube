@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getRandomVideos } from "../utils/fetch.js";
-import Options from "./Options.jsx";
+import CategoryNav from "./CategoryNav.jsx";
 import ShowGrid from "./ShowGrid";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <div>
-      <Options />
+      <CategoryNav />
       <ShowGrid items={items} />
     </div>
   );

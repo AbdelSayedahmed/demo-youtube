@@ -1,18 +1,19 @@
-.options-container {
+.Category-nav-container {
     display: flex;
     gap: 15px;
     justify-content: center;
 }
 
-.options-container a {
+.Category-nav-container button {
     color: white;
+    background-color: #212121;
     text-decoration: none;
     border: 1px solid #292929;
     border-radius: 15px;
     padding: 5px 15px;
 }
 
-.options-container a:hover {
+.Category-nav-container a:hover {
     border: 1px solid grey;
     background-color: grey;
 }

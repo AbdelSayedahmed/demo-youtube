@@ -9,6 +9,7 @@ import "./App.css";
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [category, setCategory] = useState();
 
   return (
     <>
@@ -21,7 +22,12 @@ export default function App() {
           element={<Shows setSearchTerm={setSearchTerm} />}
         />
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<Shows />} />
+        <Route
+          path="/category/:option"
+          element={
+            <Shows category={category} setCategory={setCategory} />
+          }
+        />
       </Routes>
     </>
   );
