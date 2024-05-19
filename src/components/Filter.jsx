@@ -7,8 +7,10 @@ export default function Filter({ searchTerm, setSearchTerm, handleCategoryShow }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate(`/search/${searchTerm}`);
-    handleCategoryShow(false);
+    if (searchTerm) {
+      navigate(`/search/${searchTerm}`);
+      handleCategoryShow(false);
+    }
   };
 
   const handleChange = (e) => {

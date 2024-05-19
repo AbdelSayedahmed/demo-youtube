@@ -4,7 +4,7 @@ import { decoder, getVideoDetails } from "../utils/fetch";
 import Comments from "./Comments.jsx";
 import "./Show.css";
 
-export default function Show() {
+export default function Show({ setShowCategory }) {
   const { id: videoId } = useParams();
   const [video, setVideo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -15,6 +15,7 @@ export default function Show() {
     async function fetchVideo() {
       setLoading(true);
       setError(null);
+      setShowCategory(false)
       try {
         const videoDetails = await getVideoDetails(videoId);
         setVideo(videoDetails);
