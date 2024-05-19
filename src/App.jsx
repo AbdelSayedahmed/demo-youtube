@@ -5,12 +5,15 @@ import Show from "./components/Show.jsx";
 import Nav from "./components/Nav.jsx";
 import Shows from "./components/Shows.jsx";
 import Home from "./components/Home.jsx";
-import "./App.css";
 import Category from "./components/Category.jsx";
+import "./App.css";
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
+  const [showCategory, setShowCategory] = useState(true);
+
+  const handleCategoryShow = (input) => setShowCategory(input);
 
   return (
     <>
@@ -18,6 +21,8 @@ export default function App() {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
         setCategory={setCategory}
+        showCategory={showCategory}
+        handleCategoryShow={handleCategoryShow}
       />
       <Routes>
         <Route path="/about" element={<About />} />

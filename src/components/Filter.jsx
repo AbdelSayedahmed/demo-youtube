@@ -2,12 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./Filter.css";
 
-export default function Filter({ searchTerm, setSearchTerm }) {
+export default function Filter({ searchTerm, setSearchTerm, handleCategoryShow }) {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate(`/search/${searchTerm}`);
+    handleCategoryShow(false);
   };
 
   const handleChange = (e) => {
