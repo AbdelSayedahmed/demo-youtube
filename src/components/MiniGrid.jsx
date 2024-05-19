@@ -18,8 +18,8 @@ export default function MiniGrid({ category }) {
   }, [category]);
 
   return (
-    <div className="mini-grid-container">
-      <h3>{category.name}</h3>
+    <fieldset className="mini-grid-container">
+      <legend>{category.name}</legend>
       <div className="mini-grid-container_videos">
         {items.map((item, i) => (
           <Link key={i} to={`/${item.videoId}`}>
@@ -27,6 +27,6 @@ export default function MiniGrid({ category }) {
           </Link>
         ))}
       </div>
-    </div>
+    </fieldset>
   );
 }
