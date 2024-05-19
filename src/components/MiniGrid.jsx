@@ -18,15 +18,17 @@ export default function MiniGrid({ category }) {
   }, [category]);
 
   return (
-    <fieldset className="mini-grid-container">
-      <legend>{category.name}</legend>
-      <div className="mini-grid-container_videos">
-        {items.map((item, i) => (
-          <Link key={i} to={`/${item.videoId}`}>
-            <ShowListing title={item.title} thumbnail={item.thumbnail} />
-          </Link>
-        ))}
+    <>
+      <div className="mini-grid-container">
+        <h4>{category.name}</h4>
+        <div className="mini-grid-container_videos">
+          {items.map((item, i) => (
+            <Link key={i} to={`/${item.videoId}`}>
+              <ShowListing title={item.title} thumbnail={item.thumbnail} />
+            </Link>
+          ))}
+        </div>
       </div>
-    </fieldset>
+    </>
   );
 }

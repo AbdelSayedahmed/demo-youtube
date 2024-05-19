@@ -2,14 +2,12 @@
     width: 500px; 
     margin: 20px auto; 
     padding: 20px;
-    /* background-color: #f4f4f4; 
-    border: 1px solid #ccc;  */
     border-radius: 8px; 
 }
 
 
 .form-container label {
-    display: block; /*will change so doesnt take page */
+    display: block;
     margin-bottom: 5px; 
     color: #333; 
     font-weight: bold; 
@@ -18,7 +16,7 @@
 
 .form-container input[type="text"],
 .form-container textarea {
-    width: 100%; /* want it to fill box */
+    width: 100%;
     padding: 8px; 
     margin-bottom: 10px; 
     border: 1px solid #ccc; 
@@ -27,15 +25,15 @@
 
 
 .form-container button {
-    width: 100%; /* will change later */
+    width: 100%;
     padding: 10px; 
     background-color: #007BFF; 
-    color: white; /* will change late */
-    font-size: 16px; /* will change later */
-    border: none; /* No border */
+    color: white;
+    font-size: 16px;
+    border: none;
     border-radius: 4px; 
     cursor: pointer; 
-    transition: background-color 0.3s; /* googled its for :Smooth transition for background color */
+    transition: background-color 0.3s;
 }
 
 .form-container button:hover {

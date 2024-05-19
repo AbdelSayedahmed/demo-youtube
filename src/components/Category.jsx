@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./Category.css";
 import ShowGrid from "./ShowGrid";
 import { getCategoryVideos } from "../utils/fetch";
 
