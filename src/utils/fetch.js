@@ -40,6 +40,7 @@ export function searchVideos(query) {
           thumbnail: item.snippet.thumbnails.high.url,
           description: item.snippet.description,
           kind: item.id.kind,
+          channelId: item.snippet.channelId,
         }))
         .filter(
           (item) => item.kind !== "youtube#channel" && item.description !== ""
