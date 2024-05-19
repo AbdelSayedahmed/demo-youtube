@@ -8,7 +8,12 @@ export default function ShowGrid({ items }) {
     <div className="shows-grid-container">
       {items.map((item, i) => (
         <Link key={i} to={`/${item.videoId}`}>
-          <ShowListing title={item.title} thumbnail={item.thumbnail} />
+          <ShowListing
+            title={item.title}
+            thumbnail={item.thumbnail}
+            channelTitle={item.channelTitle}
+            publishedAt={item.publishedAt}
+          />
         </Link>
       ))}
     </div>

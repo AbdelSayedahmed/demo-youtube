@@ -14,7 +14,8 @@ export function getRandomVideos() {
           thumbnail: item.snippet.thumbnails.standard.url,
           description: item.snippet.description,
           kind: item.id.kind,
-          channelId: item.snippet.channelId,
+          channelTitle: item.snippet.channelTitle,
+          publishedAt: item.snippet.publishedAt,
         }))
         .filter(
           (item) => item.kind !== "youtube#channel" && item.description !== ""
@@ -40,7 +41,8 @@ export function searchVideos(query) {
           thumbnail: item.snippet.thumbnails.high.url,
           description: item.snippet.description,
           kind: item.id.kind,
-          channelId: item.snippet.channelId,
+          channelTitle: item.snippet.channelTitle,
+          publishedAt: item.snippet.publishedAt,
         }))
         .filter(
           (item) => item.kind !== "youtube#channel" && item.description !== ""
@@ -66,12 +68,11 @@ export function getVideoDetails(videoId) {
       return {
         title: video.snippet.title,
         description: video.snippet.description,
-        thumbnail:
-          video.snippet.thumbnails?.high?.url ||
-          video.snippet.thumbnails?.default?.url,
+        thumbnail: video.snippet.thumbnails.high.url,
         videoId: video.id,
         statistics: video.statistics,
         publishedAt: video.snippet.publishedAt,
+        channelTitle: video.snippet.channelTitle,
       };
     })
     .catch((error) => {
@@ -87,12 +88,13 @@ export function getCategoryVideos(category, count) {
   )
     .then((response) => response.json())
     .then((data) => {
-      return data.items
-        .map((item) => ({
-          title: item.snippet.title,
-          videoId: item.id,
-          thumbnail: item.snippet.thumbnails.standard.url,
-        }))
+      return data.items.map((item) => ({
+        title: item.snippet.title,
+        videoId: item.id,
+        thumbnail: item.snippet.thumbnails.standard.url,
+        channelTitle: item.snippet.channelTitle,
+        publishedAt: item.snippet.publishedAt,
+      }));
     })
     .catch((error) => {
       console.error("Error fetching categorized videos:", error);
@@ -105,4 +107,35 @@ export function decoder(text) {
   const textArea = document.createElement("textarea");
   textArea.innerHTML = text;
   return textArea.value;
+}
+
+// Function to calculate how much time has elapsed since video creation
+export function dateFormatter(timestamp) {
+  const inputDate = new Date(timestamp);
+  const now = new Date();
+  const diffInSeconds = Math.floor((now - inputDate) / 1000);
+
+  const seconds = diffInSeconds;
+  const minutes = Math.floor(diffInSeconds / 60);
+  const hours = Math.floor(diffInSeconds / 3600);
+  const days = Math.floor(diffInSeconds / (3600 * 24));
+  const weeks = Math.floor(diffInSeconds / (3600 * 24 * 7));
+  const months = Math.floor(diffInSeconds / (3600 * 24 * 30.44));
+  const years = Math.floor(diffInSeconds / (3600 * 24 * 365.25));
+
+  if (years > 0) {
+    return `${years} year${years > 1 ? "s" : ""} ago`;
+  } else if (months > 0) {
+    return `${months} month${months > 1 ? "s" : ""} ago`;
+  } else if (weeks > 0) {
+    return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
+  } else if (days > 0) {
+    return `${days} day${days > 1 ? "s" : ""} ago`;
+  } else if (hours > 0) {
+    return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+  } else if (minutes > 0) {
+    return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+  } else {
+    return `${seconds} second${seconds > 1 ? "s" : ""} ago`;
+  }
 }

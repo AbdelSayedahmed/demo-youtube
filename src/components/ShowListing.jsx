@@ -1,12 +1,18 @@
 import React from "react";
-import { decoder } from "../utils/fetch";
+import { decoder, dateFormatter } from "../utils/fetch";
 import "./ShowListing.css";
 
-export default function ShowListing({ title, thumbnail, channelId }) {
+export default function ShowListing({ title, thumbnail, channelTitle, publishedAt }) {
   return (
     <div className="listing-container">
-      <img src={thumbnail} alt={`Thumbnail of ${title}`} />
-      <h3>{decoder(title)}</h3>
+      <img id="thumbnail" src={thumbnail} alt={`Thumbnail of ${title}`} />
+      <div className="listing-container_content">
+        <img id="profile-pic" src="../assets/placeholder.png" alt="profile picture" />
+        <div className="listing-container_content_flex-one">
+          <h3 id="title">{decoder(title)}</h3>
+          <h5>{decoder(channelTitle)}  -  {dateFormatter(publishedAt)}</h5>
+        </div>
+      </div>
     </div>
   );
 }

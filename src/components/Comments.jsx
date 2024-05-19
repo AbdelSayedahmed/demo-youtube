@@ -38,7 +38,6 @@ export default function Comments() {
         />
         <button type="submit">Submit</button>
       </form>
-      {/* when i write */}
       <div>
         {commentsList.map((item, index) => (
           <div key={index} className="comment">

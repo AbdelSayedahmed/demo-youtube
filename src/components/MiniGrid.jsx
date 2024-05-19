@@ -24,7 +24,12 @@ export default function MiniGrid({ category }) {
         <div className="mini-grid-container_videos">
           {items.map((item, i) => (
             <Link key={i} to={`/${item.videoId}`}>
-              <ShowListing title={item.title} thumbnail={item.thumbnail} />
+              <ShowListing
+                title={item.title}
+                thumbnail={item.thumbnail}
+                channelTitle={item.channelTitle}
+                publishedAt={item.publishedAt}
+              />
             </Link>
           ))}
         </div>
