@@ -14,6 +14,7 @@ export function getRandomVideos() {
           thumbnail: item.snippet.thumbnails.standard.url,
           description: item.snippet.description,
           kind: item.id.kind,
+          channelId: item.snippet.channelId,
         }))
         .filter(
           (item) => item.kind !== "youtube#channel" && item.description !== ""

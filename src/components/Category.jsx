@@ -9,7 +9,6 @@ export default function Category({ category }) {
   useEffect(() => {
     getCategoryVideos(category, 32)
       .then((data) => {
-        console.log(category);
         setItems(data);
       })
       .catch((error) => console.error("Error searching videos:", error));

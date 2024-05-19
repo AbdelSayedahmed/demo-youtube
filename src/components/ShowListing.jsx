@@ -2,7 +2,7 @@ import React from "react";
 import { decoder } from "../utils/fetch";
 import "./ShowListing.css";
 
-export default function ShowListing({ title, thumbnail }) {
+export default function ShowListing({ title, thumbnail, channelId }) {
   return (
     <div className="listing-container">
       <img src={thumbnail} alt={`Thumbnail of ${title}`} />
