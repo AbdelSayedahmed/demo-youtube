@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import "./MiniGrid.css";
 import { getCategoryVideos } from "../utils/fetch";
 import ShowListing from "./ShowListing";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function MiniGrid({ category }) {
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
+
+  const handleClick = (category) => {
+    navigate(`/category/${category.name}`);
+  };
 
   useEffect(() => {
     getCategoryVideos(category.id, 10)
@@ -20,7 +25,7 @@ export default function MiniGrid({ category }) {
   return (
     <>
       <div className="mini-grid-container">
-        <h4>{category.name}</h4>
+        <button onClick={() => handleClick(category)}>{category.name}</button>
         <div className="mini-grid-container_videos">
           {items.map((item, i) => (
             <Link key={i} to={`/${item.videoId}`}>
