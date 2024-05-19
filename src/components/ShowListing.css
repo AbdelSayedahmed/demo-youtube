@@ -8,29 +8,26 @@
     border-radius: 12px;
 }
 
-.listing-container h3 {
-    margin: 10px 0px 0px 0px;
-    padding: 0px;
-}
-
-.listing-container h5 {
-    margin: 10px 0px 15px 0px;
-    padding: 0px;
-}
-
-#profile-pic {
-    background-color: white;
-    width: 75px;
-    border-radius: 50%;
-}
-
 .listing-container_content {
+    margin-top: 12px;
     display: grid;
     grid-template-columns: 1fr 3fr;
     white-space: initial;
     text-overflow: ellipsis;
 }
 
-.listing-container_content_flex-one {
-    margin-left: 10px;
+.listing-container h3 {
+    margin: 10px 0px 0px 0px;
+    padding: 0px;
+}
+
+.listing-container p {
+    margin: 10px 0px 15px 0px;
+    padding: 0px;
+}
+
+#profile-pic {
+    background-color: white;
+    width: 65px;
+    border-radius: 50%;
 }

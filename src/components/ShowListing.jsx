@@ -8,9 +8,9 @@ export default function ShowListing({ title, thumbnail, channelTitle, publishedA
       <img id="thumbnail" src={thumbnail} alt={`Thumbnail of ${title}`} />
       <div className="listing-container_content">
         <img id="profile-pic" src="../assets/placeholder.png" alt="profile picture" />
-        <div className="listing-container_content_flex-one">
-          <h3 id="title">{decoder(title)}</h3>
-          <h5>{decoder(channelTitle)}  -  {dateFormatter(publishedAt)}</h5>
+        <div>
+          <h3>{decoder(title)}</h3>
+          <p>{decoder(channelTitle)}  -  {dateFormatter(publishedAt)}</p>
         </div>
       </div>
     </div>
