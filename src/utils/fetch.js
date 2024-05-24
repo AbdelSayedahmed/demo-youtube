@@ -27,7 +27,7 @@ export function getRandomVideos() {
     });
 }
 
-// Function to show 12 videos on search
+// Function to show videos on search
 export function searchVideos(query) {
   return fetch(
     `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=32`
