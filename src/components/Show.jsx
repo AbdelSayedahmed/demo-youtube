@@ -58,13 +58,14 @@ export default function Show({ setShowCategory }) {
           ></iframe>
         </div>
         <div className="video-stats">
-          <span>
-            <strong>Views:</strong> {video.statistics.viewCount}
-          </span>
-          <span>
-            <strong>Likes:</strong> {video.statistics.likeCount}
-          </span>
-          <br />
+          <div className="video-stats_mini">
+            <span>
+              <strong>Views:</strong> {video.statistics.viewCount}
+            </span>
+            <span>
+              <strong>Likes:</strong> {video.statistics.likeCount}
+            </span>
+          </div>
           <span>
             <strong>Published on:</strong>{" "}
             {new Date(video.publishedAt).toLocaleDateString()}

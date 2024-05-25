@@ -1,17 +1,12 @@
 .main-container {
   display: grid;
   grid-template-columns: 3fr 1fr;
-  gap: 10px;
-  height: 100vh;
-  align-items: start;
 }
 
 .video-container {
-  align-self: start;
-  width: 100%;
-  max-width: 800px;
-  margin: auto;
+  width: 90%;
   color: white;
+  margin: 10px 0px 0px 50px;
 }
 
 .video-wrapper {
@@ -21,6 +16,7 @@
   overflow: hidden;
   max-width: 100%;
   background: #000;
+  border-radius: 15px;
 }
 
 .video-wrapper iframe {
@@ -32,11 +28,10 @@
 }
 
 .video-stats {
-  margin: 10px 0px;
-}
-
-.video-stats span {
-  margin: 0px 10px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0px 10px 0px;
 }
 
 .toggle-description-btn {
@@ -50,6 +45,10 @@
 }
 
 .related-content-container {
-  align-self: start;
-  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-content-container a {
+  text-decoration: none;
 }

@@ -20,7 +20,6 @@ export default function Comments() {
   return (
     <div>
       <form onSubmit={handleSubmit} className="form-container">
-        <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
@@ -28,15 +27,14 @@ export default function Comments() {
           onChange={(e) => setName(e.target.value)}
           placeholder="Name..."
         />
-        <label htmlFor="comment">Comment</label>
-        <textarea
+        <input
+          type="text"
           id="comment"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          placeholder="Type your comment here..."
-          rows="4"
+          placeholder="Add a comment..."
         />
-        <button type="submit">Submit</button>
+        <button type="submit">Comment</button>
       </form>
       <div>
         {commentsList.map((item, index) => (

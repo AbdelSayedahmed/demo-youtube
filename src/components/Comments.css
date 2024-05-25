@@ -1,41 +1,45 @@
 .form-container {
-    width: 500px; 
-    margin: 20px auto; 
-    padding: 20px;
-    border-radius: 8px; 
+    width: 75%;
+    border-radius: 8px;
 }
 
-
-.form-container label {
-    display: block;
-    margin-bottom: 5px; 
-    color: #333; 
-    font-weight: bold; 
+#name, #comment {
+    width: 25%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    background-color: #212121;
+    color: white;
+    border-radius: 0px;
 }
 
+#name:focus, #comment:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+}
 
-.form-container input[type="text"],
-.form-container textarea {
+#name::placeholder, #comment::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#comment {
     width: 100%;
-    padding: 8px; 
-    margin-bottom: 10px; 
-    border: 1px solid #ccc; 
-    border-radius: 4px; 
 }
 
 
 .form-container button {
-    width: 100%;
-    padding: 10px; 
-    background-color: #007BFF; 
+    width: max-content;
+    padding: 10px 20px;
+    background-color: #464646;
     color: white;
     font-size: 16px;
     border: none;
-    border-radius: 4px; 
-    cursor: pointer; 
+    border-radius: 25px;
+    cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .form-container button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
 }
