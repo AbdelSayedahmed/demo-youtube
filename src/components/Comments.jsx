@@ -34,7 +34,9 @@ export default function Comments() {
           onChange={(e) => setComment(e.target.value)}
           placeholder="Add a comment..."
         />
-        <button type="submit">Comment</button>
+        <div className="shift-right">
+          <button type="submit">Comment</button>
+        </div>
       </form>
       <div>
         {commentsList.map((item, index) => (

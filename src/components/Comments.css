@@ -27,6 +27,9 @@
     width: 100%;
 }
 
+.shift-right {
+    text-align: right;
+}
 
 .form-container button {
     width: max-content;
