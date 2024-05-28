@@ -6,6 +6,7 @@ import Nav from "./components/Nav.jsx";
 import Shows from "./components/Shows.jsx";
 import Home from "./components/Home.jsx";
 import Category from "./components/Category.jsx";
+import Register from "./components/Register.jsx";
 import "./App.css";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         handleCategoryShow={handleCategoryShow}
       />
       <Routes>
+        <Route path="/" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route
           path="/:id"
@@ -35,7 +37,7 @@ export default function App() {
           element={<Shows setSearchTerm={setSearchTerm} />}
         />
         <Route
-          path="/"
+          path="/home"
           element={<Home setCategory={setCategory} category={category} />}
         />
         <Route

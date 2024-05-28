@@ -15,7 +15,7 @@ export default function Nav({
     <div>
       <div className="nav-container">
         <div className="nav-container_left">
-          <Link to={"/"} onClick={() => handleCategoryShow(true)}>
+          <Link to={"/home"} onClick={() => handleCategoryShow(true)}>
             <img src="../assets/youtubelogo.png" alt="Home" id="youtubelogo" />
           </Link>
           <Filter
