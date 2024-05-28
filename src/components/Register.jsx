@@ -1,13 +1,13 @@
-import "./Register.css";
 import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "../utils/axios";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/register";
 
-export default function Register() {
+const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -45,6 +45,7 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // if button enabled with JS hack
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
     if (!v1 || !v2) {
@@ -64,6 +65,8 @@ export default function Register() {
       console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       setSuccess(true);
+      //clear state and controlled inputs
+      //need value attrib on inputs for this
       setUser("");
       setPwd("");
       setMatchPwd("");
@@ -219,7 +222,6 @@ export default function Register() {
             Already registered?
             <br />
             <span className="line">
-              {/*put router link here*/}
               <a href="#">Sign In</a>
             </span>
           </p>
@@ -228,3 +230,5 @@ export default function Register() {
     </>
   );
 };
+
+export default Register;
