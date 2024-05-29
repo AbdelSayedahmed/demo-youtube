@@ -8,6 +8,7 @@ import Home from "./components/Home.jsx";
 import Category from "./components/Category.jsx";
 import Register from "./components/Register.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
+import Login from "./components/Login.jsx";
 import "./App.css";
 
 export default function App() {
@@ -28,6 +29,7 @@ export default function App() {
       />
       <Routes>
         <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
         <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
