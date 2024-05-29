@@ -15,9 +15,7 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
   const [showCategory, setShowCategory] = useState(true);
-
-  const handleCategoryShow = (input) => setShowCategory(input);
-
+  
   return (
     <>
       <Nav
