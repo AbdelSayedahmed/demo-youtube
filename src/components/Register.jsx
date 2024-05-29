@@ -7,7 +7,7 @@ const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = "/register";
 
-const Register = () => {
+export default function Register() {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -26,22 +26,16 @@ const Register = () => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSuccess] = useState(false);
 
-  useEffect(() => {
-    userRef.current.focus();
-  }, []);
+  useEffect(() => userRef.current.focus(), []);
 
-  useEffect(() => {
-    setValidName(USER_REGEX.test(user));
-  }, [user]);
+  useEffect(() => setValidName(USER_REGEX.test(user)), [user]);
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
     setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd]);
 
-  useEffect(() => {
-    setErrMsg("");
-  }, [user, pwd, matchPwd]);
+  useEffect(() => setErrMsg(""), [user, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,32 +45,34 @@ const Register = () => {
       setErrMsg("Invalid Entry");
       return;
     }
-    try {
-      const response = await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd }),
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        }
-      );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
-      setSuccess(true);
-      setUser("");
-      setPwd("");
-      setMatchPwd("");
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("No Server Response");
-      } else if (err.response?.status === 409) {
-        setErrMsg("Username Taken");
-      } else {
-        setErrMsg("Registration Failed");
-      }
-      errRef.current.focus();
-    }
+    console.log(user, pwd);
+    setSuccess(true);
+    // try {
+    //   const response = await axios.post(
+    //     REGISTER_URL,
+    //     JSON.stringify({ user, pwd }),
+    //     {
+    //       headers: { "Content-Type": "application/json" },
+    //       withCredentials: true,
+    //     }
+    //   );
+    //   console.log(response?.data);
+    //   console.log(response?.accessToken);
+    //   console.log(JSON.stringify(response));
+    //   setSuccess(true);
+    //   setUser("");
+    //   setPwd("");
+    //   setMatchPwd("");
+    // } catch (err) {
+    //   if (!err?.response) {
+    //     setErrMsg("No Server Response");
+    //   } else if (err.response?.status === 409) {
+    //     setErrMsg("Username Taken");
+    //   } else {
+    //     setErrMsg("Registration Failed");
+    //   }
+    //   errRef.current.focus();
+    // }
   };
 
   return (
@@ -90,25 +86,15 @@ const Register = () => {
         </section>
       ) : (
         <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive"
-          >
+          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
             {errMsg}
           </p>
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
               Username:
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validName ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={validName || !user ? "hide" : "invalid"}
-              />
+              <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"}/>
+              <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"}/>
             </label>
             <input
               type="text"
@@ -123,12 +109,7 @@ const Register = () => {
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-            <p
-              id="uidnote"
-              className={
-                userFocus && user && !validName ? "instructions" : "offscreen"
-              }
-            >
+            <p id="uidnote" className={ userFocus && user && !validName ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               4 to 24 characters.
               <br />
@@ -136,17 +117,10 @@ const Register = () => {
               <br />
               Letters, numbers, underscores, hyphens allowed.
             </p>
-
             <label htmlFor="password">
               Password:
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validPwd ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={validPwd || !pwd ? "hide" : "invalid"}
-              />
+              <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
             </label>
             <input
               type="password"
@@ -159,10 +133,7 @@ const Register = () => {
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
-            <p
-              id="pwdnote"
-              className={pwdFocus && !validPwd ? "instructions" : "offscreen"}
-            >
+            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               8 to 24 characters.
               <br />
@@ -176,17 +147,10 @@ const Register = () => {
               <span aria-label="dollar sign">$</span>{" "}
               <span aria-label="percent">%</span>
             </p>
-
             <label htmlFor="confirm_pwd">
               Confirm Password:
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={validMatch && matchPwd ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={validMatch || !matchPwd ? "hide" : "invalid"}
-              />
+              <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
+              <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
             </label>
             <input
               type="password"
@@ -199,19 +163,11 @@ const Register = () => {
               onFocus={() => setMatchFocus(true)}
               onBlur={() => setMatchFocus(false)}
             />
-            <p
-              id="confirmnote"
-              className={
-                matchFocus && !validMatch ? "instructions" : "offscreen"
-              }
-            >
+            <p id="confirmnote" className={ matchFocus && !validMatch ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
-
-            <button
-              disabled={!validName || !validPwd || !validMatch ? true : false}
-            >
+            <button disabled={!validName || !validPwd || !validMatch ? true : false}>
               Sign Up
             </button>
           </form>
@@ -227,5 +183,3 @@ const Register = () => {
     </>
   );
 };
-
-export default Register;
