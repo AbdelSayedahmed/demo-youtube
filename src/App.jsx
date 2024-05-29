@@ -7,6 +7,7 @@ import Shows from "./components/Shows.jsx";
 import Home from "./components/Home.jsx";
 import Category from "./components/Category.jsx";
 import Register from "./components/Register.jsx";
+import PageNotFound from "./components/PageNotFound.jsx";
 import "./App.css";
 
 export default function App() {
@@ -27,7 +28,6 @@ export default function App() {
       />
       <Routes>
         <Route path="/" element={<Register />} />
-        
         <Route path="/about" element={<About />} />
         <Route
           path="/:id"
@@ -45,6 +45,7 @@ export default function App() {
           path="/category/:categorySearch"
           element={<Category category={category} />}
         />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );
