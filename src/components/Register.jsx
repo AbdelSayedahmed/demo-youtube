@@ -89,6 +89,7 @@ export default function Register() {
         <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"} aria-live="assertive">
           {errMsg}
         </p>
+        <p id="message">Demo Register Page</p>
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">

@@ -108,3 +108,9 @@
     padding: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
+#message {
+    font-size: 12px;
+    font-style: italic;
+    color: rgb(199, 245, 245);
+}
