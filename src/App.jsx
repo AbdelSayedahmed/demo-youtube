@@ -6,7 +6,7 @@ import Nav from "./components/Nav.jsx";
 import Shows from "./components/Shows.jsx";
 import Home from "./components/Home.jsx";
 import Category from "./components/Category.jsx";
-import Register from "./components/Register.jsx";
+import Signup from "./components/Signup.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
 import Login from "./components/Login.jsx";
 import "./App.css";
@@ -15,7 +15,9 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
   const [showCategory, setShowCategory] = useState(true);
-  
+
+  const handleCategoryShow = (input) => setShowCategory(input);
+
   return (
     <>
       <Nav
@@ -26,7 +28,7 @@ export default function App() {
         handleCategoryShow={handleCategoryShow}
       />
       <Routes>
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/about" element={<About />} />
         <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
