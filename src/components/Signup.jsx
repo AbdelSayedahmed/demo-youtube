@@ -27,47 +27,36 @@ export default function Signup() {
   };
 
   return (
-    <main>
-      <section>
-        <div>
-          <div>
-            <h1> FocusApp </h1>
-            <form>
-              <div>
-                <label htmlFor="email-address">Email address</label>
-                <input
-                  type="email"
-                  label="Email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="Email address"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  label="Create password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  placeholder="Password"
-                />
-              </div>
-
-              <button type="submit" onClick={onSubmit}>
-                Sign up
-              </button>
-            </form>
-
-            <p>
-              Already have an account? <NavLink to="/login">Sign in</NavLink>
-            </p>
-          </div>
+    <div className="signup-container">
+      <h1>Signup</h1>
+      <form>
+        <div className="signup-container_input">
+          <label htmlFor="email-address">Email address</label>
+          <input
+            type="email"
+            label="Email address"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-      </section>
-    </main>
+        <div className="signup-container_input">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            label="Create password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button type="submit" onClick={onSubmit}>
+          Sign up
+        </button>
+      </form>
+      <p>
+        Already have an account? <NavLink to="/login">Sign in</NavLink>
+      </p>
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-.register-container {
+.signup-container {
     font-size: 22px;
     color: #fff;
     width: 100%;
@@ -11,7 +11,25 @@
     margin: 0px auto;
 }
 
-.register-container form {
+.signup-container_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-container_input label {
+    margin: 15px 0px 5px 0px;
+    font-size: 1.2rem;
+}
+
+.signup-container_input input {
+    border: none;
+    border-bottom: 1px solid grey;
+    background-color: #ffffff00;
+    color: white;
+    font-size: 1rem;
+}
+
+.signup-container form {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -19,98 +37,24 @@
     padding-bottom: 1rem;
 }
 
-.register-container a, .register-container a:visited {
+.signup-container a, .signup-container a:visited {
     display: inline-block;
     color: #fff;
 }
 
-#username, #password, #confirm_pwd {
-    font-size: 22px;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
-    background-color: #212121;
-    color: white;
-    border-radius: 0px;
-}
-
-#username:focus, #password:focus, #confirm_pwd:focus {
-    outline: none;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
-}
-
-.register-container button {
+.signup-container button {
+    width: max-content;
+    margin: 0px auto;
+    margin-top: 1rem;
     border: 1px solid grey;
     background-color: rgb(46, 45, 45);
     color: white;
-    font-size: 22px;
-    padding: 0.25rem;
+    font-size: 18px;
     border-radius: 0.5rem;
+    padding: 0.5rem;
 }
 
-.register-container button:hover {
+.signup-container button:hover {
     cursor: pointer;
     background-color: rgb(19, 18, 18);
-}
-
-.register-container label {
-    font-size: 18px;
-    margin-bottom: 0.2rem;
-}
-
-.register-container label,
-.register-container button {
-    margin-top: 1rem;
-}
-
-.register-container button {
-    padding: 0.5rem;
-}
-
-.instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
-}
-
-.instructions>svg {
-    margin-right: 0.25rem;
-}
-
-.offscreen {
-    position: absolute;
-    left: -9999px;
-}
-
-.hide {
-    display: none;
-}
-
-.valid {
-    color: limegreen;
-    margin-left: 0.25rem;
-}
-
-.invalid {
-    color: red;
-    margin-left: 0.25rem;
-}
-
-.errMsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-#message {
-    font-size: 12px;
-    font-style: italic;
-    color: rgb(199, 245, 245);
 }
