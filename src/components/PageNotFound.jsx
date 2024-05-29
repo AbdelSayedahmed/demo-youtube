@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./PageNotFound.css";
 
-const PageNotFound = () => {
+export default function PageNotFound() {
   return (
     <div className="page-not-found">
       <h1>404</h1>
@@ -11,6 +11,4 @@ const PageNotFound = () => {
       <Link to="/home">Go to Home</Link>
     </div>
   );
-};
-
-export default PageNotFound;
+}
