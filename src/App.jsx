@@ -29,22 +29,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/:id"
-          element={<Show setShowCategory={setShowCategory} />}
-        />
-        <Route
-          path="/search/:query"
-          element={<Shows setSearchTerm={setSearchTerm} />}
-        />
-        <Route
-          path="/home"
-          element={<Home setCategory={setCategory} category={category} />}
-        />
-        <Route
-          path="/category/:categorySearch"
-          element={<Category category={category} />}
-        />
+        <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
+        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
+        <Route path="/home" element={<Home setCategory={setCategory} category={category} />} />
+        <Route path="/category/:categorySearch" element={<Category category={category} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
