@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../utils/axios";
@@ -82,7 +83,7 @@ export default function Register() {
         <section className="register-container">
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <Link to={"/Login"}>Sign In</Link>
           </p>
         </section>
         ) : (
@@ -93,7 +94,7 @@ export default function Register() {
           <h1>Register</h1>
           <form onSubmit={handleSubmit}>
             <label htmlFor="username">
-              Username:
+              Username
               <FontAwesomeIcon icon={faCheck} className={validName ? "valid" : "hide"}/>
               <FontAwesomeIcon icon={faTimes} className={validName || !user ? "hide" : "invalid"}/>
             </label>
@@ -119,7 +120,7 @@ export default function Register() {
               Letters, numbers, underscores, hyphens allowed.
             </p>
             <label htmlFor="password">
-              Password:
+              Password
               <FontAwesomeIcon icon={faCheck} className={validPwd ? "valid" : "hide"} />
               <FontAwesomeIcon icon={faTimes} className={validPwd || !pwd ? "hide" : "invalid"} />
             </label>
@@ -149,7 +150,7 @@ export default function Register() {
               <span aria-label="percent">%</span>
             </p>
             <label htmlFor="confirm_pwd">
-              Confirm Password:
+              Confirm Password
               <FontAwesomeIcon icon={faCheck} className={validMatch && matchPwd ? "valid" : "hide"} />
               <FontAwesomeIcon icon={faTimes} className={validMatch || !matchPwd ? "hide" : "invalid"} />
             </label>
@@ -176,7 +177,7 @@ export default function Register() {
             Already registered?
             <br />
             <span className="line">
-              <a href="#">Sign In</a>
+                <Link to={"/Login"}>Sign In</Link>
             </span>
           </p>
         </section>
