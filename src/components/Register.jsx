@@ -90,7 +90,7 @@ export default function Register() {
           {errMsg}
         </p>
         <p id="message">Demo Register Page</p>
-        <h1>Register</h1>
+        <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">
             Username
