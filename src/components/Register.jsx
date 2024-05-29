@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../utils/axios";
+import "./Register.css";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -78,15 +79,15 @@ export default function Register() {
   return (
     <>
       {success ? (
-        <section>
+        <section className="register-container">
           <h1>Success!</h1>
           <p>
             <a href="#">Sign In</a>
           </p>
         </section>
-      ) : (
-        <section>
-          <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">
+        ) : (
+        <section className="register-container">
+          <p ref={errRef} className={errMsg ? "errMsg" : "offscreen"} aria-live="assertive">
             {errMsg}
           </p>
           <h1>Register</h1>
@@ -105,11 +106,11 @@ export default function Register() {
               value={user}
               required
               aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
+              aria-describedby="uidNote"
               onFocus={() => setUserFocus(true)}
               onBlur={() => setUserFocus(false)}
             />
-            <p id="uidnote" className={ userFocus && user && !validName ? "instructions" : "offscreen"}>
+            <p id="uidNote" className={ userFocus && user && !validName ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               4 to 24 characters.
               <br />
@@ -129,11 +130,11 @@ export default function Register() {
               value={pwd}
               required
               aria-invalid={validPwd ? "false" : "true"}
-              aria-describedby="pwdnote"
+              aria-describedby="pwdNote"
               onFocus={() => setPwdFocus(true)}
               onBlur={() => setPwdFocus(false)}
             />
-            <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+            <p id="pwdNote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               8 to 24 characters.
               <br />
@@ -159,11 +160,11 @@ export default function Register() {
               value={matchPwd}
               required
               aria-invalid={validMatch ? "false" : "true"}
-              aria-describedby="confirmnote"
+              aria-describedby="confirmNote"
               onFocus={() => setMatchFocus(true)}
               onBlur={() => setMatchFocus(false)}
             />
-            <p id="confirmnote" className={ matchFocus && !validMatch ? "instructions" : "offscreen"}>
+            <p id="confirmNote" className={ matchFocus && !validMatch ? "instructions" : "offscreen"}>
               <FontAwesomeIcon icon={faInfoCircle} />
               Must match the first password input field.
             </p>
