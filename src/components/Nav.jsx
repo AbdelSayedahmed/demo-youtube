@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 import CategoryNav from "./CategoryNav";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
 
 export default function Nav({
   searchTerm,
@@ -12,7 +14,24 @@ export default function Nav({
   setShowCategory,
   setShowNav,
   currentUser,
+  setCurrentUser,
 }) {
+  const logout = () => {
+    return signOut(auth);
+  };
+
+  const handleSignOut = () => {
+    logout()
+      .then(() => {
+        setCurrentUser("");
+        setShowCategory(true);
+        setShowNav(true);
+      })
+      .catch((error) => {
+        console.error("Error signing out:", error);
+      });
+  };
+  
   return (
     <div>
       <div className="nav-container">
@@ -34,17 +53,18 @@ export default function Nav({
           >
             About
           </Link>
-          {currentUser ? (<Link>Sign Out</Link>) : (
-          <div>
-            <Link to="/signup" onClick={() => setShowNav(false)}>
-              Sign-Up
-            </Link>
-            <Link to="/login" onClick={() => setShowNav(false)}>
-              Login
-            </Link>
-          </div>
+          {currentUser ? (
+            <Link onClick={handleSignOut}>Sign Out</Link>
+          ) : (
+            <div>
+              <Link to="/signup" onClick={() => setShowNav(false)}>
+                Sign-Up
+              </Link>
+              <Link to="/login" onClick={() => setShowNav(false)}>
+                Login
+              </Link>
+            </div>
           )}
-          
         </div>
       </div>
       {showCategory ? <CategoryNav setCategory={setCategory} /> : null}

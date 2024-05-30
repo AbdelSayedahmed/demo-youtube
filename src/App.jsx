@@ -33,6 +33,7 @@ export default function App() {
           showCategory={showCategory}
           setShowCategory={setShowCategory}
           setShowNav={setShowNav}
+          setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />
       ) : null}
