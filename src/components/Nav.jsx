@@ -11,6 +11,7 @@ export default function Nav({
   showCategory,
   setShowCategory,
   setShowNav,
+  currentUser,
 }) {
   return (
     <div>
@@ -33,8 +34,17 @@ export default function Nav({
           >
             About
           </Link>
-          <Link to="/signup" onClick={() => setShowNav(false)}>Sign-Up</Link>
-          <Link to="/login" onClick={() => setShowNav(false)}>Login</Link>
+          {currentUser ? (<Link>Sign Out</Link>) : (
+          <div>
+            <Link to="/signup" onClick={() => setShowNav(false)}>
+              Sign-Up
+            </Link>
+            <Link to="/login" onClick={() => setShowNav(false)}>
+              Login
+            </Link>
+          </div>
+          )}
+          
         </div>
       </div>
       {showCategory ? <CategoryNav setCategory={setCategory} /> : null}

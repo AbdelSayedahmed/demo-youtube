@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import "./Signup.css";
 
-export default function Signup({ setShowNav }) {
+export default function Signup({ setShowNav, setCurrentUser }) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -16,6 +16,7 @@ export default function Signup({ setShowNav }) {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setCurrentUser(user.uid);
         console.log(user);
         navigate("/");
       })

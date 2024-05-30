@@ -4,7 +4,7 @@ import { auth } from "../firebase.js";
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
-export default function Login({ setShowNav }) {
+export default function Login({ setShowNav, setCurrentUser }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,6 +14,7 @@ export default function Login({ setShowNav }) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        setCurrentUser(user.uid);
         navigate("/");
         console.log(user);
       })

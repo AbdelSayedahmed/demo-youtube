@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import About from "./components/About.jsx";
 import Show from "./components/Show.jsx";
@@ -18,6 +18,11 @@ export default function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [showNav, setShowNav] = useState(true);
 
+  useEffect(() => {
+    setShowCategory(true)
+    setShowNav(true)
+  }, [])
+
   return (
     <>
       {showNav ? (
@@ -28,11 +33,12 @@ export default function App() {
           showCategory={showCategory}
           setShowCategory={setShowCategory}
           setShowNav={setShowNav}
+          currentUser={currentUser}
         />
       ) : null}
       <Routes>
-        <Route path="/signup" element={<Signup setShowNav={setShowNav} />} />
-        <Route path="/login" element={<Login setShowNav={setShowNav} />} />
+        <Route path="/signup" element={<Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
+        <Route path="/login" element={<Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Home setCategory={setCategory} category={category} />} />
         <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
