@@ -9,29 +9,32 @@ export default function Nav({
   setSearchTerm,
   setCategory,
   showCategory,
-  handleCategoryShow,
+  setShowCategory,
+  setShowNav,
 }) {
   return (
     <div>
       <div className="nav-container">
         <div className="nav-container_left">
-          <Link to={"/home"} onClick={() => handleCategoryShow(true)}>
+          <Link to={"/"} onClick={() => setShowCategory(true)}>
             <img src="../assets/youtubelogo.png" alt="Home" id="youtubelogo" />
           </Link>
           <Filter
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
-            handleCategoryShow={handleCategoryShow}
+            setShowCategory={setShowCategory}
           />
         </div>
         <div className="nav-container_right">
           <Link
             to="/about"
             className="nav-container"
-            onClick={() => handleCategoryShow(false)}
+            onClick={() => setShowCategory(false)}
           >
             About
           </Link>
+          <Link to="/signup" onClick={() => setShowNav(false)}>Sign-Up</Link>
+          <Link to="/login" onClick={() => setShowNav(false)}>Login</Link>
         </div>
       </div>
       {showCategory ? <CategoryNav setCategory={setCategory} /> : null}

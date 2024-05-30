@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
 import "./Signup.css";
 
-export default function Signup() {
+export default function Signup({ setShowNav }) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -17,17 +17,20 @@ export default function Signup() {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
+
+    setShowNav(true);
   };
 
   return (
     <div className="signup-container">
+      <Link to="/" onClick={() => setShowNav(true)}>Go Home</Link>
       <h1>Signup</h1>
       <form>
         <div className="signup-container_input">

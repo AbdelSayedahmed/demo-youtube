@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
-export default function Login() {
+export default function Login({ setShowNav }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,7 +14,7 @@ export default function Login() {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        navigate("/home");
+        navigate("/");
         console.log(user);
       })
       .catch((error) => {
@@ -22,10 +22,13 @@ export default function Login() {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
+
+    setShowNav(true);
   };
 
   return (
     <div className="login-container">
+      <Link to="/" onClick={() => setShowNav(true)}>Go Home</Link>
       <p>Login</p>
       <form>
         <div className="login-container_input">
