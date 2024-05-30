@@ -30,7 +30,11 @@ export default function Signup({ setShowNav }) {
 
   return (
     <div className="signup-container">
-      <Link to="/" onClick={() => setShowNav(true)}>Go Home</Link>
+      <div className="signup-container_top-div">
+        <Link to="/" onClick={() => setShowNav(true)}>
+          Go Home
+        </Link>
+      </div>
       <h1>Signup</h1>
       <form>
         <div className="signup-container_input">

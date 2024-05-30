@@ -28,7 +28,11 @@ export default function Login({ setShowNav }) {
 
   return (
     <div className="login-container">
-      <Link to="/" onClick={() => setShowNav(true)}>Go Home</Link>
+      <div className="login-container_top-div">
+        <Link to="/" onClick={() => setShowNav(true)}>
+          Go Home
+        </Link>
+      </div>
       <p>Login</p>
       <form>
         <div className="login-container_input">
@@ -56,7 +60,7 @@ export default function Login({ setShowNav }) {
         </div>
       </form>
       <p className="text-sm text-white text-center">
-        No account yet? <NavLink to="/">Sign up</NavLink>
+        No account yet? <NavLink to="/signup">Sign up</NavLink>
       </p>
     </div>
   );
