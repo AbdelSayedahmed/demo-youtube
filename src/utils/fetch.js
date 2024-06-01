@@ -5,7 +5,12 @@ export function getRandomVideos() {
   return fetch(
     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&maxResults=15`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch random videos");
+      }
+      return response.json();
+    })
     .then((data) => {
       return data.items
         .map((item) => ({
@@ -32,7 +37,12 @@ export function searchVideos(query) {
   return fetch(
     `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&part=snippet&q=${query}&maxResults=32`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch random videos");
+      }
+      return response.json();
+    })
     .then((data) => {
       return data.items
         .map((item) => ({
@@ -59,7 +69,12 @@ export function getVideoDetails(videoId) {
   return fetch(
     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet,contentDetails,statistics&id=${videoId}`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch random videos");
+      }
+      return response.json();
+    })
     .then((data) => {
       if (data.items.length === 0) {
         throw new Error("Video not found");
@@ -86,7 +101,12 @@ export function getCategoryVideos(category, count) {
   return fetch(
     `https://www.googleapis.com/youtube/v3/videos?key=${apiKey}&part=snippet&chart=mostPopular&videoCategoryId=${category}&maxResults=${count}`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch random videos");
+      }
+      return response.json();
+    })
     .then((data) => {
       return data.items.map((item) => ({
         title: item.snippet.title,

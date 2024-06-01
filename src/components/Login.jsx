@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase.js";
+import { useAuth } from "../AuthContext.jsx";
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
-export default function Login({ setShowNav, setCurrentUser }) {
+export default function Login({ setShowNav }) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { setCurrentUser, currentUser } = useAuth();
+
+  useEffect(() => {
+    if (currentUser) {
+     navigate("/");
+    }
+  }, [currentUser]);
+
 
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setCurrentUser(user.uid);
+        setCurrentUser(user);
         navigate("/");
         console.log(user);
       })

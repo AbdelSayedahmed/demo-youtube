@@ -9,19 +9,21 @@ import Category from "./components/Category.jsx";
 import Signup from "./components/Signup.jsx";
 import PageNotFound from "./components/PageNotFound.jsx";
 import Login from "./components/Login.jsx";
+import { useAuth } from "./AuthContext.jsx";
 import "./App.css";
 
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
   const [showCategory, setShowCategory] = useState(true);
-  const [currentUser, setCurrentUser] = useState("");
   const [showNav, setShowNav] = useState(true);
 
+  const { currentUser, setCurrentUser } = useAuth();
+
   useEffect(() => {
-    setShowCategory(true)
-    setShowNav(true)
-  }, [])
+    setShowCategory(true);
+    setShowNav(true);
+  }, []);
 
   return (
     <>
@@ -38,13 +40,35 @@ export default function App() {
         />
       ) : null}
       <Routes>
-        <Route path="/signup" element={<Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
-        <Route path="/login" element={<Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
+        <Route
+          path="/signup"
+          element={
+            <Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
+          }
+        />
         <Route path="/about" element={<About />} />
-        <Route path="/" element={<Home setCategory={setCategory} category={category} />} />
-        <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
-        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
-        <Route path="/category/:categorySearch" element={<Category category={category} />} />
+        <Route
+          path="/"
+          element={<Home setCategory={setCategory} category={category} />}
+        />
+        <Route
+          path="/:id"
+          element={<Show setShowCategory={setShowCategory} />}
+        />
+        <Route
+          path="/search/:query"
+          element={<Shows setSearchTerm={setSearchTerm} />}
+        />
+        <Route
+          path="/category/:categorySearch"
+          element={<Category category={category} />}
+        />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

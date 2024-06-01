@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 import CategoryNav from "./CategoryNav";
-import { signOut } from "firebase/auth";
+import { getAuth, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 
 export default function Nav({
@@ -16,14 +16,11 @@ export default function Nav({
   currentUser,
   setCurrentUser,
 }) {
-  const logout = () => {
-    return signOut(auth);
-  };
-
   const handleSignOut = () => {
-    logout()
+    const auth = getAuth();
+    signOut(auth)
       .then(() => {
-        setCurrentUser("");
+        setCurrentUser(null);
         setShowCategory(true);
         setShowNav(true);
       })
@@ -31,7 +28,7 @@ export default function Nav({
         console.error("Error signing out:", error);
       });
   };
-  
+
   return (
     <div>
       <div className="nav-container">

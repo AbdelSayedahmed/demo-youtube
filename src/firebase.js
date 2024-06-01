@@ -13,5 +13,13 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
+export const signOut = async () => {
+  try {
+    await auth.signOut();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export const auth = getAuth(app);
 export default app;
