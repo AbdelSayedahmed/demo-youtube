@@ -5,35 +5,47 @@ import { useAuth } from "../AuthContext.jsx";
 import { NavLink, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
-export default function Login({ setShowNav }) {
-  const navigate = useNavigate();
+export default function Login() {
+  const { setShowNav, setShowCategory, setCurrentUser, currentUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setCurrentUser, currentUser } = useAuth();
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUser) {
-     navigate("/");
+      navigate("/");
     }
+    setShowNav(false);
+    setShowCategory(false);
   }, [currentUser]);
-
 
   const onLogin = (e) => {
     e.preventDefault();
+    setError(""); // Reset error message
+
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setCurrentUser(user);
         navigate("/");
-        console.log(user);
+        setShowNav(true);
+        setShowCategory(true);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+
+        if (errorCode === "auth/user-not-found") {
+          setError("Email does not exist. Please check the email or sign up.");
+        } else if (errorCode === "auth/wrong-password") {
+          setError("Incorrect password. Please try again.");
+        } else {
+          setError(errorMessage);
+        }
+
         console.log(errorCode, errorMessage);
       });
-
-    setShowNav(true);
   };
 
   return (
@@ -44,6 +56,7 @@ export default function Login({ setShowNav }) {
         </Link>
       </div>
       <p>Login</p>
+      {error && <p className="error">{error}</p>}
       <form>
         <div className="login-container_input">
           <label htmlFor="email-address">Email address</label>

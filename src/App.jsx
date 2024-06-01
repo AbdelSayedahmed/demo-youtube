@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import About from "./components/About.jsx";
 import Show from "./components/Show.jsx";
 import Nav from "./components/Nav.jsx";
@@ -15,15 +15,21 @@ import "./App.css";
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
-  const [showCategory, setShowCategory] = useState(true);
-  const [showNav, setShowNav] = useState(true);
+  
+  const { currentUser, setCurrentUser, showNav, setShowNav, showCategory, setShowCategory  } = useAuth();
 
-  const { currentUser, setCurrentUser } = useAuth();
+  const location = useLocation();
 
   useEffect(() => {
-    setShowCategory(true);
-    setShowNav(true);
-  }, []);
+    const path = location.pathname;
+    if (path === "/signup" || path === "/login") {
+      setShowNav(false);
+      setShowCategory(false);
+    } else {
+      setShowNav(true);
+      setShowCategory(true);
+    }
+  }, [location.pathname]);
 
   return (
     <>
@@ -32,18 +38,22 @@ export default function App() {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           setCategory={setCategory}
+          setCurrentUser={setCurrentUser}
+          currentUser={currentUser}
           showCategory={showCategory}
           setShowCategory={setShowCategory}
           setShowNav={setShowNav}
-          setCurrentUser={setCurrentUser}
-          currentUser={currentUser}
         />
       ) : null}
       <Routes>
         <Route
           path="/signup"
           element={
-            <Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
+            <Signup
+              setShowNav={setShowNav}
+              setCurrentUser={setCurrentUser}
+              setShowCategory={setShowCategory}
+            />
           }
         />
         <Route
