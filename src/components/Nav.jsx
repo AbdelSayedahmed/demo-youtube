@@ -43,6 +43,13 @@ export default function Nav({
           />
         </div>
         <div className="nav-container_right">
+          <Link
+            to="/about"
+            className="nav-container"
+            onClick={() => setShowCategory(false)}
+          >
+            About
+          </Link>
           {currentUser ? (
             <Link onClick={handleSignOut}>Sign Out</Link>
           ) : (
