@@ -15,7 +15,7 @@ import "./App.css";
 export default function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [category, setCategory] = useState("");
-  
+
   const { currentUser, setCurrentUser, showNav, setShowNav, showCategory, setShowCategory  } = useAuth();
 
   const location = useLocation();
@@ -46,39 +46,13 @@ export default function App() {
         />
       ) : null}
       <Routes>
-        <Route
-          path="/signup"
-          element={
-            <Signup
-              setShowNav={setShowNav}
-              setCurrentUser={setCurrentUser}
-              setShowCategory={setShowCategory}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
-          }
-        />
+        <Route path="/signup" element={<Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} setShowCategory={setShowCategory} />} />
+        <Route path="/login" element={<Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/"
-          element={<Home setCategory={setCategory} category={category} />}
-        />
-        <Route
-          path="/:id"
-          element={<Show setShowCategory={setShowCategory} />}
-        />
-        <Route
-          path="/search/:query"
-          element={<Shows setSearchTerm={setSearchTerm} />}
-        />
-        <Route
-          path="/category/:categorySearch"
-          element={<Category category={category} />}
-        />
+        <Route path="/" element={<Home setCategory={setCategory} category={category} />} />
+        <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
+        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
+        <Route path="/category/:categorySearch" element={<Category category={category} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
