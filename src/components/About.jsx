@@ -7,13 +7,13 @@ export default function About() {
       <h1>About me</h1>
       <img src="https://ca.slack-edge.com/TCVA3PF24-U064KLDFYKB-1e41f20ca5e6-512" />
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-        accusamus culpa officia eum soluta unde. Odit cupiditate sunt asperiores
-        accusantium, quisquam blanditiis enim voluptate illo velit magni
-        molestiae molestias neque! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Exercitationem excepturi, molestiae facilis laboriosam
-        ipsam quaerat voluptatibus est porro minima, vero aspernatur repudiandae
-        autem. Reiciendis est nostrum deleniti dignissimos quae nobis.
+        Hello, my name is Abdel. I am an aspiring software engineer currently
+        pursuing a career in full-stack development. My passion for programming
+        began in high school, and I’ve been hooked ever since. Besides coding, I
+        have a strong interest in cars and computers. In my free time, I enjoy
+        working on cars and building gaming rigs. I love the process of coding
+        and creating new things. Additionally, I excel at debugging and finding
+        quick solutions to complex problems.
       </p>
       <nav>
         <Link to={"https://github.com/AbdelSayedahmed"} target="_blank">
