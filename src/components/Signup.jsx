@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink, useNavigate, Link } from "react-router-dom";
-import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+} from "firebase/auth";
 import { auth } from "../firebase.js";
 import { useAuth } from "../AuthContext.jsx";
 import "./Signup.css";
 
 export default function Signup() {
-  const { setShowNav, setShowCategory, setCurrentUser } = useAuth();
+  const { setCurrentUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setShowNav(false);
-    setShowCategory(false);
-  }, []);
-
   const onSubmit = async (e) => {
     e.preventDefault();
     setError("");
-
+  
     try {
       const signInMethods = await fetchSignInMethodsForEmail(auth, email);
       if (signInMethods.length > 0) {
-        setError("Email is already in use. Please use a different email.");
+        setError("The email address is already in use. Please sign in instead.");
       } else {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
         setCurrentUser(user.uid);
         navigate("/");
-        setShowNav(true);
-        setShowCategory(true);
       }
     } catch (error) {
-      setError(error.message);
+      switch (error.code) {
+        case "auth/invalid-email":
+          setError("Invalid email address. Please enter a valid email.");
+          break;
+        case "auth/weak-password":
+          setError("Weak password. Please choose a stronger password.");
+          break;
+        default:
+          setError("An error occurred while signing up. Please try again later.");
+          break;
+      }
     }
-  };
+  };  
 
   return (
     <div className="signup-container">
       <div className="signup-container_top-div">
-        <Link to="/" onClick={() => setShowNav(true)}>
+        <Link to="/">
           Go Home
         </Link>
       </div>

@@ -6,18 +6,14 @@ import { NavLink, useNavigate, Link } from "react-router-dom";
 import "./Login.css";
 
 export default function Login() {
-  const { setShowNav, setShowCategory, setCurrentUser, currentUser } = useAuth();
+  const { setCurrentUser, currentUser } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (currentUser) {
-      navigate("/");
-    }
-    setShowNav(false);
-    setShowCategory(false);
+    if (currentUser) navigate("/");
   }, [currentUser]);
 
   const onLogin = (e) => {
@@ -34,16 +30,27 @@ export default function Login() {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        let errorMessage = "";
 
-        if (errorCode === "auth/user-not-found") {
-          setError("Email does not exist. Please check the email or sign up.");
-        } else if (errorCode === "auth/wrong-password") {
-          setError("Incorrect password. Please try again.");
-        } else {
-          setError(errorMessage);
+        switch (errorCode) {
+          case "auth/invalid-email":
+            errorMessage = "Email is not valid";
+            break;
+          case "auth/invalid-credential":
+            errorMessage ="Email not found. Please check your email or sign up.";
+            break;
+          case "auth/user-not-found" || "auth/invalid-credential":
+            errorMessage = "Email not found. Please check your email or sign up.";
+            break;
+          case "auth/wrong-password":
+            errorMessage = "Incorrect password. Please try again.";
+            break;
+          default:
+            errorMessage = "An error occurred. Please try again later.";
+            break;
         }
 
+        setError(errorMessage);
         console.log(errorCode, errorMessage);
       });
   };
