@@ -25,11 +25,11 @@ export default function Nav({
         setCurrentUser(null);
         setShowCategory(true);
         setShowNav(true);
-        navigate("/login");
       })
       .catch((error) => {
         console.error("Error signing out:", error);
       });
+    navigate("/login");
   };
 
   return (
