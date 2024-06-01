@@ -1,31 +1,24 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 import CategoryNav from "./CategoryNav";
 import { getAuth, signOut } from "firebase/auth";
-import { auth } from "../firebase";
 
 export default function Nav({
   searchTerm,
   setSearchTerm,
   setCategory,
-  showCategory,
-  setShowCategory,
-  setShowNav,
   currentUser,
   setCurrentUser,
+  showCategory,
 }) {
-  const navigate = useNavigate();
-
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth)
       .then(() => {
         setCurrentUser(null);
-        setShowCategory(true);
-        setShowNav(true);
-        console.log(currentUser)
+        console.log(currentUser);
       })
       .catch((error) => {
         console.error("Error signing out:", error);
@@ -36,33 +29,23 @@ export default function Nav({
     <div>
       <div className="nav-container">
         <div className="nav-container_left">
-          <Link to={"/"} onClick={() => setShowCategory(true)}>
+          <Link to={"/"}>
             <img src="../assets/youtubelogo.png" alt="Home" id="youtubelogo" />
           </Link>
-          <Filter
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            setShowCategory={setShowCategory}
-          />
+          <Filter searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </div>
         <div className="nav-container_right">
-          <Link
-            to="/about"
-            className="nav-container"
-            onClick={() => setShowCategory(false)}
-          >
+          <Link to="/about" className="nav-container">
             About
           </Link>
           {currentUser ? (
-            <Link to="/login" onClick={handleSignOut}>Sign Out</Link>
+            <Link to="/login" onClick={handleSignOut}>
+              Sign Out
+            </Link>
           ) : (
             <div>
-              <Link to="/signup" onClick={() => setShowNav(false)}>
-                Sign-Up
-              </Link>
-              <Link to="/login" onClick={() => setShowNav(false)}>
-                Login
-              </Link>
+              <Link to="/signup">Sign-Up</Link>
+              <Link to="/login">Login</Link>
             </div>
           )}
         </div>

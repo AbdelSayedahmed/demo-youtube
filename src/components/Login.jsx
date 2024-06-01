@@ -22,7 +22,7 @@ export default function Login() {
 
   const onLogin = (e) => {
     e.preventDefault();
-    setError(""); // Reset error message
+    setError("");
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
