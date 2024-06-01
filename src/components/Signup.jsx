@@ -45,13 +45,13 @@ export default function Signup() {
           Go Home
         </Link>
       </div>
-      <h1>Signup</h1>
+      <h1>Sign up</h1>
       {error && <p className="error">{error}</p>}
       <form>
         <div className="signup-container_input">
-          <label htmlFor="email-address">Email address</label>
+          <label htmlFor="signup-email">Email address</label>
           <input
-            id="email"
+            id="signup-email"
             type="email"
             label="Email address"
             value={email}
@@ -60,9 +60,9 @@ export default function Signup() {
           />
         </div>
         <div className="signup-container_input">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="signup-password">Password</label>
           <input
-            id="password"
+            id="signup-password"
             type="password"
             label="Create password"
             value={password}
