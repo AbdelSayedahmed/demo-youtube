@@ -4,11 +4,13 @@ import { searchVideos } from "../utils/fetch.js";
 import ShowGrid from "./ShowGrid";
 import "./Shows.css";
 
-export default function Shows({ setSearchTerm }) {
+export default function Shows({ setSearchTerm, setShowCategory }) {
   const [items, setItems] = useState([]);
   const { query } = useParams();
 
   useEffect(() => {
+    setShowCategory(false);
+    
     searchVideos(query)
       .then((data) => {
         setItems(data);

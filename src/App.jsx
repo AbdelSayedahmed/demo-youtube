@@ -25,6 +25,8 @@ export default function App() {
     if (path === "/signup" || path === "/login") {
       setShowNav(false);
       setShowCategory(false);
+    } else if(path === "/about" || path === "/:id" || path === "/search/:query") {
+      setShowCategory(false);
     } else {
       setShowNav(true);
       setShowCategory(true);
@@ -51,7 +53,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/" element={<Home setCategory={setCategory} category={category} />} />
         <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
-        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
+        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} setShowCategory={setShowCategory} />} />
         <Route path="/category/:categorySearch" element={<Category category={category} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
