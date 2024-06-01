@@ -25,11 +25,11 @@ export default function Nav({
         setCurrentUser(null);
         setShowCategory(true);
         setShowNav(true);
+        console.log(currentUser)
       })
       .catch((error) => {
         console.error("Error signing out:", error);
       });
-    navigate("/login");
   };
 
   return (
@@ -54,7 +54,7 @@ export default function Nav({
             About
           </Link>
           {currentUser ? (
-            <Link onClick={handleSignOut}>Sign Out</Link>
+            <Link to="/login" onClick={handleSignOut}>Sign Out</Link>
           ) : (
             <div>
               <Link to="/signup" onClick={() => setShowNav(false)}>
