@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import About from "./components/About.jsx";
 import Show from "./components/Show.jsx";
 import Nav from "./components/Nav.jsx";
 import Shows from "./components/Shows.jsx";
@@ -40,35 +39,12 @@ export default function App() {
         />
       ) : null}
       <Routes>
-        <Route
-          path="/signup"
-          element={
-            <Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />
-          }
-        />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/"
-          element={<Home setCategory={setCategory} category={category} />}
-        />
-        <Route
-          path="/:id"
-          element={<Show setShowCategory={setShowCategory} />}
-        />
-        <Route
-          path="/search/:query"
-          element={<Shows setSearchTerm={setSearchTerm} />}
-        />
-        <Route
-          path="/category/:categorySearch"
-          element={<Category category={category} />}
-        />
+        <Route path="/signup" element={<Signup setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
+        <Route path="/login" element={<Login setShowNav={setShowNav} setCurrentUser={setCurrentUser} />} />
+        <Route path="/" element={<Home setCategory={setCategory} category={category} />} />
+        <Route path="/:id" element={<Show setShowCategory={setShowCategory} />} />
+        <Route path="/search/:query" element={<Shows setSearchTerm={setSearchTerm} />} />
+        <Route path="/category/:categorySearch" element={<Category category={category} />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
