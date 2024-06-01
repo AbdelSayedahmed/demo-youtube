@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Filter from "./Filter";
 import "./Nav.css";
 import CategoryNav from "./CategoryNav";
@@ -16,6 +16,8 @@ export default function Nav({
   currentUser,
   setCurrentUser,
 }) {
+  const navigate = useNavigate();
+
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth)
@@ -23,6 +25,7 @@ export default function Nav({
         setCurrentUser(null);
         setShowCategory(true);
         setShowNav(true);
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error signing out:", error);
